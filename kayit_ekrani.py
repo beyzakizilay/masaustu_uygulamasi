@@ -1,15 +1,17 @@
 import mysql.connector
 from PyQt6.QtWidgets import *
 import sys
+import ots_ogrenci_kayit_modulu 
 
 try:
     vtb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="1234",
-        database="ots"
+        password="1234"
     )
     secilen = vtb.cursor()
+    secilen.execute("CREATE DATABASE IF NOT EXISTS ots")
+    secilen.execute("USE ots")
     secilen.execute("""
         CREATE TABLE IF NOT EXISTS kullanicilar(
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -28,51 +30,18 @@ try:
         )
     """)
     vtb.commit()
-    print("Veritabanı bağlantısı başarılı.")
+    print("Veritabanı bağlantısı tamam.")
 except Exception as e:
-    print("Veritabanına bağlanırken hata oluştu:", e)
+    print("Veritabanına bağlanırken hata:", e)
 
-class KayitPenceresi(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Kullanıcı Kayıt")
-        layout = QVBoxLayout()
-
-        layout.addWidget(QLabel("Kullanıcı Adı:"))
-        self.ka_input = QLineEdit()
-        layout.addWidget(self.ka_input)
-
-        layout.addWidget(QLabel("Şifre:"))
-        self.sifre_input = QLineEdit()
-        self.sifre_input.setEchoMode(QLineEdit.EchoMode.Password)
-        layout.addWidget(self.sifre_input)
-
-        kayit_btn = QPushButton("Kayıt Ol")
-        kayit_btn.clicked.connect(self.kaydet)
-        layout.addWidget(kayit_btn)
-
-        widget = QWidget()
-        widget.setLayout(layout)
-        self.setCentralWidget(widget)
-
-    def kaydet(self):
-        ka = self.ka_input.text()
-        sifre = self.sifre_input.text()
-        if ka and sifre:
-            secilen.execute(f"INSERT INTO kullanicilar(kullanici_adi, sifre) VALUES('{ka}','{sifre}')")
-            vtb.commit()
-            QMessageBox.information(self, "Başarılı", "Kayıt tamamlandı!")
-            self.close()
-        else:
-            QMessageBox.warning(self, "Hata", "Boş alan bırakmayın!")
 
 class AnaPencere(QMainWindow):
     def __init__(self, kullanici):
         super().__init__()
-        self.setWindowTitle(f"Sağlık Hesaplayıcı - Hoşgeldin {kullanici}")
         self.kullanici = kullanici
-        layout = QVBoxLayout()
+        self.setWindowTitle(f"Sağlık Hesaplayıcı - Hoşgeldin {kullanici}")
 
+        layout = QVBoxLayout()
         layout.addWidget(QLabel("Boy (cm):"))
         self.boy_input = QLineEdit()
         layout.addWidget(self.boy_input)
@@ -108,59 +77,62 @@ class AnaPencere(QMainWindow):
             else:
                 durum = "Obez"
 
-            self.sonuc_label.setText(f"BMI: {bmi:.2f} ({durum})\nİdeal Kilo: {ideal_kilo:.2f} kg")
+            self.sonuc_label.setText(
+                f"BMI: {bmi:.2f} ({durum})\nİdeal Kilo: {ideal_kilo:.2f} kg"
+            )
 
-            # Veriyi kaydet
-            secilen.execute(f"INSERT INTO bmi_kayit(kullanici_adi,boy,kilo,bmi,ideal_kilo) VALUES('{self.kullanici}',{boy*100},{kilo},{bmi},{ideal_kilo})")
+            secilen.execute(
+                "INSERT INTO bmi_kayit(kullanici_adi,boy,kilo,bmi,ideal_kilo) "
+                "VALUES(%s,%s,%s,%s,%s)",
+                (self.kullanici, boy*100, kilo, bmi, ideal_kilo)
+            )
             vtb.commit()
-
         except ValueError:
-            QMessageBox.warning(self, "Hata", "Lütfen tüm alanları doğru doldurun!")
+            QMessageBox.warning(self, "Hata", "Lütfen geçerli değer girin!")
+
 
 class GirisEkrani(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Giriş Ekranı")
-        self.setFixedSize(300,200)
-        layout = QVBoxLayout()
+        self.setFixedSize(300, 200)
 
-        layout.addWidget(QLabel("Kullanıcı Adı:"))
-        self.ka_input = QLineEdit()
-        layout.addWidget(self.ka_input)
+        layout = QVBoxLayout()
+        layout.addWidget(QLabel("Kullanıcı adı:"))
+        self.ka = QLineEdit()
+        layout.addWidget(self.ka)
 
         layout.addWidget(QLabel("Şifre:"))
-        self.sifre_input = QLineEdit()
-        self.sifre_input.setEchoMode(QLineEdit.EchoMode.Password)
-        layout.addWidget(self.sifre_input)
+        self.sf = QLineEdit()
+        self.sf.setEchoMode(QLineEdit.EchoMode.Password)
+        layout.addWidget(self.sf)
 
         giris_btn = QPushButton("Giriş Yap")
-        giris_btn.clicked.connect(self.giris)
+        giris_btn.clicked.connect(self.kontrol)
         layout.addWidget(giris_btn)
 
         kayit_btn = QPushButton("Kayıt Ol")
-        kayit_btn.clicked.connect(self.kayit)
+        kayit_btn.clicked.connect(self.kayit_ac)
         layout.addWidget(kayit_btn)
 
         widget = QWidget()
         widget.setLayout(layout)
         self.setCentralWidget(widget)
 
-    def giris(self):
-        ka = self.ka_input.text()
-        sifre = self.sifre_input.text()
+    def kontrol(self):
         secilen.execute("SELECT * FROM kullanicilar")
-        kullanicilar = secilen.fetchall()
-        for k in kullanicilar:
-            if ka == k[1] and sifre == k[2]:
-                self.ana_ekran = AnaPencere(ka)
-                self.ana_ekran.show()
+        kullanicilistesi = secilen.fetchall()
+        for k in kullanicilistesi:
+            if self.ka.text() == k[1] and self.sf.text() == k[2]:
+                self.ana = AnaPencere(self.ka.text())
+                self.ana.show()
                 self.close()
                 return
         QMessageBox.warning(self, "Hata", "Kullanıcı adı veya şifre yanlış!")
 
-    def kayit(self):
-        self.kayit_pencere = KayitPenceresi()
-        self.kayit_pencere.show()
+    def kayit_ac(self):
+        self.kayit = ots_ogrenci_kayit_modulu.KayitPenceresi(vtb, secilen)
+        self.kayit.show()
 
 app = QApplication(sys.argv)
 pencere = GirisEkrani()
