@@ -39,42 +39,17 @@ Her işlev ayrı modüllerle organize edilmiştir, bu sayede kod okunabilir ve y
 <a href="https://drive.google.com/file/d/1EszO9RdTTV7UCIQ0iCSFo0wvzsQCDW8N/view?usp=sharing">Exe dosyasına ulaşmak için tıklayınız...</a>
 
 
-## Anamenü    
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 194546.png">
-<p>Ana menüden çalıştırmak istediğiniz uygulamayı seçiniz.<p>
+## Giriş Eranı   
+<img height="300" src="ekran_resimleri/giris_ekrani.png">
+<p>Kullanıcı adı ve şifre ile sisteme giriş yapılır. Yeni kullanıcı iseniz Kayıt Ol butonuyla hesap oluşturabilirsiniz.<p>
 <p>-----------------------------------------<p>
 
-## 1.Yeni Araç Kaydı Ekle
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 201355.png">
-<p>Yeni araç bilgilerini (plaka, marka, model, yıl, sahip, telefon) girerek sisteme kaydedebilirsiniz. Bu kayıtlar ileride güncelleme veya muayene takibi için kullanılacaktır.<p>
+## Sağlık Hesaplama Ekranı
+<img height="300" src="ekran_resimleri/saglık_hesaplama_ekrani.png">
+<p>Giriş yaptıktan sonra açılan ekranda boy ve kilo bilgilerinizi girerek BMI hesaplayabilirsiniz.<p>
 <p>-----------------------------------------<p>
 
-## 2.Araç Listesini Göster
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 202504.png">
-<p>Tüm kayıtlı araçları listeleyebilir, araç bilgilerini hızlıca görüntüleyebilirsiniz.<p>
-<p>-----------------------------------------<p>
-
-## 3.Araç Ara
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 203119.png">
-<p>Plaka veya araç sahibine göre arama yaparak istediğiniz araç bilgilerine kolayca ulaşabilirsiniz.<p>
-<p>-----------------------------------------<p>
-
-## 4.Araç Kaydını Sil
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 203846.png">
-<p>Hatalı veya gereksiz araç kayıtlarını sistemden silebilirsiniz. Silinen kayıtlar geri alınamaz, dikkatli kullanılmalıdır.<p>
-<p>-----------------------------------------<p>
-
-## 5.Araç Bilgilerini Güncelle
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-16 110205.png">
-<p>Mevcut araç bilgilerini güncelleyebilir, eksik veya hatalı verileri düzeltebilirsiniz. Böylece sistem her zaman güncel kalır<p>
-<p>-----------------------------------------<p>
-
-## 6.Muayene Sonucu Ekle/Güncelle
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 210722.png">
-<p>Araçların muayene sonuçlarını ekleyebilir veya güncelleyebilirsiniz. Yaklaşan muayene tarihleri ve sonuçlar sistemde saklanır<p>
-<p>-----------------------------------------<p>
-
-## 7..Araç Sahibi Notları
-<img height="300" src="ekran_resimleri/Ekran görüntüsü 2025-08-15 211510.png">
-<p>Araç sahipleri veya sistem yöneticileri için not ekleyebilir, mevcut notları görüntüleyebilirsiniz. Önemli bilgiler kolayca takip edilir<p>
+## Sağlık Hesaplama Sonuç Ekranı
+<img height="300" src="ekran_resimleri/sonuc_ekrani.png">
+<p>Girilen boy ve kilo bilgilerine göre; BMI değeri hesaplanır, durum bilgisi (Zayıf / Normal / Fazla Kilo / Obez) gösterilir.Ayrıca ideal kilo bilgisi de kullanıcıya sunulur.<p>
 <p>-----------------------------------------<p>
