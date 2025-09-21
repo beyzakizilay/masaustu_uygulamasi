@@ -8,6 +8,7 @@
 
 ## Özellikler
 -Kullanıcı Kaydı & Girişi
+
 -Kullanıcılar yeni hesap açabilir veya mevcut hesaplarıyla giriş yapabilir.
 -BMI Hesaplama
 -Boy ve kilo bilgileri girildiğinde BMI değeri hesaplanır.
