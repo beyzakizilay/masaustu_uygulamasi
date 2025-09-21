@@ -45,7 +45,7 @@ Her işlev ayrı modüllerle organize edilmiştir, bu sayede kod okunabilir ve y
 <p>-----------------------------------------<p>
 
 ## Sağlık Hesaplama Ekranı
-<img height="300" src="ekran_resimleri/saglık_hesaplama_ekrani.png">
+<img height="300" src="ekran_resimleri/saglik_hesaplama_ekrani.png">
 <p>Giriş yaptıktan sonra açılan ekranda boy ve kilo bilgilerinizi girerek BMI hesaplayabilirsiniz.<p>
 <p>-----------------------------------------<p>
 
