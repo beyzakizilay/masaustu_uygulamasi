@@ -27,7 +27,9 @@
 
 ## Kullanılan Teknolojiler
 -Python
+
 -PyQt6 (GUI arayüzü)
+
 -MySQL (veri saklama)
 
 Her işlev ayrı modüllerle organize edilmiştir, bu sayede kod okunabilir ve yönetilebilir.<p>
