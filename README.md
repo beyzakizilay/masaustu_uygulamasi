@@ -10,12 +10,19 @@
 -Kullanıcı Kaydı & Girişi
 
 -Kullanıcılar yeni hesap açabilir veya mevcut hesaplarıyla giriş yapabilir.
+
 -BMI Hesaplama
+
 -Boy ve kilo bilgileri girildiğinde BMI değeri hesaplanır.
+
 -Sonuç, Zayıf / Normal / Fazla Kilo / Obez olarak sınıflandırılır.
+
 -Kullanıcıya ayrıca ideal kilo bilgisi verilir.
+
 -Veritabanı Kaydı
+
 -Kullanıcı bilgileri kullanicilar tablosunda tutulur.
+
 -BMI hesaplama geçmişi bmi_kayit tablosuna kaydedilir.
 
 ## Kullanılan Teknolojiler
