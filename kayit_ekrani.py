@@ -137,4 +137,4 @@ class GirisEkrani(QMainWindow):
 app = QApplication(sys.argv)
 pencere = GirisEkrani()
 pencere.show()
-sys.exit(app.exec())
+sys.exit(app.exec())  
