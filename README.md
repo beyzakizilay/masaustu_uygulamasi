@@ -6,6 +6,9 @@
 ## Sağlık Hesaplayıcı (PyQt6 + MySQL) Uygulaması Proje Tanıtımı
 <p>Bu proje, kullanıcıların vücut kitle indeksi (BMI) hesaplaması yapabilmesini ve sonuçları veritabanında saklamasını sağlayan bir masaüstü uygulamasıdır.
 
+<a href=https://drive.google.com/file/d/1mEtbtX0W-8PqAEl-roZ4Fwt3VhkaVwmN/view?usp=sharing">Videoyu izlemek için tıklayınız...
+</a>">Videoyu izlemek için tıklayınız...
+</a>
 ## Özellikler
 -Kullanıcı Kaydı & Girişi
 
