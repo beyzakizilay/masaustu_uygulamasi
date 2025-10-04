@@ -7,7 +7,6 @@
 <p>Bu proje, kullanıcıların vücut kitle indeksi (BMI) hesaplaması yapabilmesini ve sonuçları veritabanında saklamasını sağlayan bir masaüstü uygulamasıdır.<p>
 
 <a href=https://drive.google.com/file/d/1ywfdWTlj2yeO3At4mPb69o01KhzwOlLE/view?usp=sharing>Videoyu izlemek için tıklayınız...
-</a>">Videoyu izlemek için tıklayınız...
 </a>
 
 ## Özellikler
